@@ -8,5 +8,11 @@ let dog = {
     }
 }
 
-dog.talk()
-console.log('hello')
+dog.talk() // "woof"
+let talkFunction = dog.talk
+talkFunction() // undefined
+let boundFunction = talkFunction.bind(dog)
+boundFunction() // "woof"
+
+let button = document.getElementById('myNiceButton')
+button.addEventListener('click', dog.talk.bind(dog))
