@@ -39,24 +39,56 @@
 
 // Day 3) Prototype Basics
 
-function talk() {
-    console.log(this.sound)
+// function talk() {
+//     console.log(this.sound)
+// }
+// let animal = {
+//     talk
+// }
+// let dog = {
+//     sound: 'woof!'
+// }
+// let prarieDog = {
+//     howl: function() {
+//         console.log(this.sound.toUpperCase())
+//     }
+// }
+// Object.setPrototypeOf(dog, animal)
+// animal.talk = function() {
+//     console.log('i am a little teapot')
+// }
+// dog.talk()
+// Object.setPrototypeOf(prarieDog, dog)
+// prarieDog.howl()
+
+// Day 4) The new keyword
+
+function Person(saying) {
+    this.saying = saying
 }
-let animal = {
-    talk
+
+Person.prototype.talk = function() {
+    console.log('I say:', this.saying)
 }
-let dog = {
-    sound: 'woof!'
+
+var crockford = new Person('Semicolons!!!!!')
+crockford.talk()
+
+// lets recreate new and what it does
+// remember that whenever a function object is created in javascript, it has the prototype property automatically
+
+function spawn(constructor) {
+    var obj = {}
+    Object.setPrototypeOf(obj, constructor.prototype)
+    var argsArray = Array.prototype.slice.apply(arguments)
+    constructor.apply(obj, argsArray.slice(1))
+    return obj
 }
-let prarieDog = {
-    howl: function() {
-        console.log(this.sound.toUpperCase())
-    }
-}
-Object.setPrototypeOf(dog, animal)
-animal.talk = function() {
-    console.log('i am a little teapot')
-}
-dog.talk()
-Object.setPrototypeOf(prarieDog, dog)
-prarieDog.howl()
+// this function shows what new is already doing
+// Array.from creates an array from whatever is passed in, in this case, the arguments property.  If you don't remember what that is,
+// console.log(arguments) or check out the 'new' keyword video at 17 min in
+
+
+
+var crockfard = spawn(Person, 'Semicolons!!!')
+crockfard.talk()
