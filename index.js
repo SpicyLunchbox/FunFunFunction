@@ -97,21 +97,49 @@
 
 // prototypes are just objects that delegate to other objects
 
-let cat = {breed: 'munchkin'}
+// let cat = {breed: 'munchkin'}
 
-let myCat = {name: 'Fluffykins'}
+// let myCat = {name: 'Fluffykins'}
 
-Object.setPrototypeOf(myCat, cat)
+// Object.setPrototypeOf(myCat, cat)
 
-cat.tailLength = 15
+// cat.tailLength = 15
 
-console.log(myCat.name)
+// console.log(myCat.name)
 
-console.log(myCat.breed)
+// console.log(myCat.breed)
 
-console.log(myCat.__proto__)
+// console.log(myCat.__proto__)
 
 // as you can see in the console, the __proto__ property on myCat is a reference to the prototype and any changes to the prototype will be reflected within __proto__
 // Remember that prototype is a property that is created on functions to allow for the new keyword to instantiate a new object based off the constructor function
 
 // to reiterate, __proto__ is a property on a normal object, prototype is a property of a constructor function
+
+// Day 6) Object.create
+
+const cat = {
+    makeSound: function() {
+        console.log(this.sound)
+    }
+}
+
+const mark = Object.create(cat)
+mark.sound = 'mewuuUUF'
+mark.makeSound()
+console.log(mark)
+
+const waffles = Object.create(cat)
+waffles.sound = 'mrrrrrrrooooooooowwwwwwwwwwww'
+waffles.makeSound()
+
+console.log('Is mark a cat?', cat.isPrototypeOf(mark))
+
+// Object.create is more natural to the prototype model than "new" keyword
+
+// Here is a re-creation of the Object.create method
+function objectCreate(prototype) {
+    const obj = {}
+    Object.setPrototypeOf(obj, prototype)
+    return obj
+}
