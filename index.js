@@ -118,28 +118,55 @@
 
 // Day 6) Object.create
 
-const cat = {
-    makeSound: function() {
-        console.log(this.sound)
+// const cat = {
+//     makeSound: function() {
+//         console.log(this.sound)
+//     }
+// }
+
+// const mark = Object.create(cat)
+// mark.sound = 'mewuuUUF'
+// mark.makeSound()
+// console.log(mark)
+
+// const waffles = Object.create(cat)
+// waffles.sound = 'mrrrrrrrooooooooowwwwwwwwwwww'
+// waffles.makeSound()
+
+// console.log('Is mark a cat?', cat.isPrototypeOf(mark))
+
+// // Object.create is more natural to the prototype model than "new" keyword
+
+// // Here is a re-creation of the Object.create method
+// function objectCreate(prototype) {
+//     const obj = {}
+//     Object.setPrototypeOf(obj, prototype)
+//     return obj
+// }
+
+// Day 7)  Object Creation in JavaScript
+
+class Mammal {
+    constructor(sound) {
+        this.sound = sound
+    }
+
+    talk() {
+        return this.sound
     }
 }
 
-const mark = Object.create(cat)
-mark.sound = 'mewuuUUF'
-mark.makeSound()
-console.log(mark)
-
-const waffles = Object.create(cat)
-waffles.sound = 'mrrrrrrrooooooooowwwwwwwwwwww'
-waffles.makeSound()
-
-console.log('Is mark a cat?', cat.isPrototypeOf(mark))
-
-// Object.create is more natural to the prototype model than "new" keyword
-
-// Here is a re-creation of the Object.create method
-function objectCreate(prototype) {
-    const obj = {}
-    Object.setPrototypeOf(obj, prototype)
-    return obj
+class Dog extends Mammal {
+    constructor() {
+        super('woffeliwofffffffff') // calls the constructor of the inherited class
+    }
 }
+
+let fluffykins = new Dog()
+let x = fluffykins.talk()
+
+console.log(x)
+
+// in JavaScript, Composition is better to use than Inheritance
+// in JavaScript, there are no private members
+// in JavaScript, classes are syntactic sugar.  It is all smoke and mirrors!
