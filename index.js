@@ -146,27 +146,49 @@
 
 // Day 7)  Object Creation in JavaScript
 
-class Mammal {
-    constructor(sound) {
-        this.sound = sound
-    }
+// class Mammal {
+//     constructor(sound) {
+//         this.sound = sound
+//     }
 
-    talk() {
-        return this.sound
-    }
-}
+//     talk() {
+//         return this.sound
+//     }
+// }
 
-class Dog extends Mammal {
-    constructor() {
-        super('woffeliwofffffffff') // calls the constructor of the inherited class
-    }
-}
+// class Dog extends Mammal {
+//     constructor() {
+//         super('woffeliwofffffffff') // calls the constructor of the inherited class
+//     }
+// }
 
-let fluffykins = new Dog()
-let x = fluffykins.talk()
+// let fluffykins = new Dog()
+// let x = fluffykins.talk()
 
-console.log(x)
+// console.log(x)
 
 // in JavaScript, Composition is better to use than Inheritance
 // in JavaScript, there are no private members
 // in JavaScript, classes are syntactic sugar.  It is all smoke and mirrors!
+
+// fizzbuzz practice
+
+// create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5,
+// and "fizzbuzz" at multiples of 3 and 5
+
+function fizzbuzz () {
+    for(let i = 1; i < 101; i++) {
+        if(i % 3 === 0 && i % 5 === 0){
+            console.log('fizzbuzz')
+            continue;
+        }
+        if(i % 3 === 0) {
+            console.log('fizz')
+        }
+        if(i % 5 === 0) {
+            console.log('buzz')
+        }
+    }
+}
+
+fizzbuzz()
