@@ -176,19 +176,54 @@
 // create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5,
 // and "fizzbuzz" at multiples of 3 and 5
 
-function fizzbuzz () {
-    for(let i = 1; i < 101; i++) {
-        if(i % 3 === 0 && i % 5 === 0){
-            console.log('fizzbuzz')
-            continue;
-        }
-        if(i % 3 === 0) {
-            console.log('fizz')
-        }
-        if(i % 5 === 0) {
-            console.log('buzz')
-        }
-    }
-}
+// function fizzbuzz () {
+//     for(let i = 1; i < 101; i++) {
+//         if(i % 3 === 0 && i % 5 === 0){
+//             console.log('fizzbuzz')
+//             continue;
+//         }
+//         if(i % 3 === 0) {
+//             console.log('fizz')
+//         }
+//         if(i % 5 === 0) {
+//             console.log('buzz')
+//         }
+//     }
+// }
 
-fizzbuzz()
+// fizzbuzz()
+
+//  arrow function lesson
+
+const dragonEvents = [
+    { type: 'attack', value: 12, target: 'dorkman' },
+    { type: 'yawn', value: 40 },
+    { type: 'eat', target: 'horse' },
+    { type: 'attack', value: 23, target: 'fluffykins' },
+    { type: 'attack', value: 12, target: 'dorkman' },
+]
+
+// const totalDamageOnDorkman = dragonEvents
+// .filter(function(event) {
+//     return event.type === 'attack'
+// })
+// .filter(function(event) {
+//     return event.target === 'dorkman'
+// })
+// .map(function(event) {
+//     return event.value
+// })
+// .reduce(function(prev, value) {
+//     return (prev || 0) + value
+// })
+
+// we can take all of this and simply it into an arrow function
+
+const totalDamageOnDorkman = dragonEvents
+.filter(event => event.type === 'attack')  // if you have only one parameter to a function, you can omit the parenthesis around that parameter
+.filter((event) => event.target === 'dorkman')
+.map((event) => event.value)
+.reduce((prev, value) => (prev || 0) + value)
+
+console.log('totalDamageOnDorkman\n', totalDamageOnDorkman)
+
